@@ -1,0 +1,33 @@
+--Create a Taylor Swift merch store database
+
+create table Taylors (id integer primary key, name text, release_year integer, price integer, rating integer);
+
+INSERT INTO Taylors VALUES
+(1, "Midnigth rain", 2022, 2, 4),
+(2, "RED", 2012, 3, 5),
+(3, "Cruel Summer",2018, 4, 3),
+(4, "YBWM", 2009, 2, 2),
+(5, "Mastermind", 2022, 4, 1),
+(6, "Exile", 2021, 3, 6),
+(7, "Willow", 2021, 5, 7),
+(8, "MINE", 2009, 8, 8),
+(9, "Betty", 2021, 1, 9),
+(10, "the 1", 2021, 5, 10),
+(11, "Bejeweled", 2022, 3, 11),
+(12, "Picture to burn", 2007, 4, 12),
+(13, "Fearless", 2008, 7, 13),
+(14, "Maroon", 2022, 3, 14),
+(15, "Fifteen", 2009, 7, 15);
+
+--Display the database ordered by price
+SELECT * FROM Taylors;
+Select * from Taylors ORDER BY price;
+
+-- What's our newest inventory?
+SELECT * FROM Taylors where release_year >2010
+
+--what are the most 5 popular items? 
+SELECT name, price, rating
+FROM Taylors
+order by rating asc
+limit 5; 
