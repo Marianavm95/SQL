@@ -1,0 +1,33 @@
+-create table Crafts (id integer primary key, item TEXT, Aisle INTEGER, price INTEGER, popularity INTEGER);
+
+INSERT INTO Crafts VALUES
+(1, "Construction Paper", 4, 2.78, 4),
+(2, "Giant Construction Paper", 4, 9.66, 5),
+(3, "Chenille Pipe Cleaner", 8, 4.56, 3),
+(4, "Felt", 8, 2.99, 2),
+(5, "Bells", 7, 4.89, 1),
+(6, "Googly Eyes", 6, 3.76, 6),
+(7, "Glitter", 1, 5.67, 7),
+(8, "Glue", 1, 2.88, 8),
+(9, "Scissors", 2, 2.89, 9),
+(10, "Sequins", 2, 5.99, 10),
+(11, "Resin", 5, 31.66, 11),
+(12, "Paint", 6, 4.56, 12),
+(13, "Brushes", 6, 2.67, 13),
+(14, "Stencils", 3, 3.67, 14),
+(15, "Markers", 3, 4.89, 15);
+
+--Display the database ordered by price. 
+SELECT * FROM Crafts
+ORDER BY price desc; 
+
+--What is the avg price of items in Aisle 2 section? 
+SELECT AVG(price) "avg 2 item price"
+FROM Crafts
+where aisle='2';
+
+--What are the most 5 popular items? 
+SELECT item, price, popularity
+FROM Crafts
+order by popularity desc
+limit 5;
