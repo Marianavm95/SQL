@@ -26,4 +26,8 @@ SELECT AVG(price) "avg 2 item price"
 FROM Crafts
 where aisle='2';
 
-
+--What are the most 5 popular items? 
+SELECT item, price, popularity
+FROM Crafts
+order by popularity desc
+limit 5;
