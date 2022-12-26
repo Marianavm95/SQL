@@ -1,0 +1,31 @@
+/* Create table about the people and what they do here */
+
+create table actors (id integer primary key, name text, movies_made integer, movie_genre text);
+insert into actors Values 
+  (1, "John Krasinsky", 67, "comedy"),
+  (2, "Emily Blunt ", 58, "love"),
+  (3, "Ryan Reynolds", 198, "comedy"),
+  (4, "Blake Lively", 12, "love"),
+  (5, "Tom Holland", 87, "action"),
+  (6, "Zendaya", 25, "love");
+
+create table partner (id integer primary key, name text, married_dating text, partner_id integer, since integer);
+INSERT INTO partner VALUES
+  (1,"John Krasinsky", "married", 2,2012),
+  (2, "Emily Blunt ", "married", 1,2012),
+  (3, "Ryan Reynolds", "married", 4, 2016),
+  (4, "Blake Lively", "married", 3, 2016),
+  (5, "Tom Holland", "dating", 6, 2021),
+  (6, "Zendaya", "dating", 5, 2021);
+
+
+
+    SELECT name, movies_made as popularity from actors ORDER BY movies_made DESC;
+
+select actors.name, actors.movie_genre
+from actors order by movie_genre asc;
+
+SELECT a.name as actor, p.name as partner
+from actors a
+join partner p
+on a.id = p.partner_id;
