@@ -12,20 +12,21 @@ AND orderID <> ''
 AND orderID <> 'Order ID';
 
 /*Select the customer account numbers for all the orders that were placed in February.*/
-Select customers.acctnum, customers.order_id, FebSales.orderID
+Select distinct customers.acctnum
 from BIT_DB_firstpractice.customers customers
 inner join BIT_DB_firstpractice.FebSales FebSales
 on customers.order_id = FebSales.orderID
 WHERE orderID <> ''
 AND orderID <> 'Order ID';
 
+
 /*Which product was the cheapest one sold in January, and what was the price?*/
-Select product, price
+Select distinct product, price
 FROM BIT_DB_firstpractice.JanSales
 where price in (select min(price)FROM BIT_DB_firstpractice.JanSales) limit 1;
 
 /*What is the total revenue for each product sold in January? (Revenue can be calculated using the number of products sold and the price of the products) */
-Select sum(quantity)*price as revenue
+Select sum(quantity)*price as revenue, product
 FROM BIT_DB_firstpractice.JanSales
 GROUP BY product;
 
