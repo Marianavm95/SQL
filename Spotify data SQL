@@ -1,0 +1,71 @@
+CREATE TABLE BIT_DB.Spotifydata (
+id integer PRIMARY KEY,
+artist_name varchar NOT NULL,
+track_name varchar NOT NULL,
+track_id varchar NOT NULL,
+popularity integer NOT NULL,
+danceability decimal(4,3) NOT NULL,
+energy decimal(4,3) NOT NULL,
+song_key integer NOT NULL,
+loudness decimal(5,3) NOT NULL,
+song_mode integer NOT NULL,
+speechiness decimal(5,4) NOT NULL,
+acousticness decimal(6,5) NOT NULL,
+instrumentalness text NOT NULL,
+liveness decimal(5,4) NOT NULL,
+valence decimal(4,3) NOT NULL,
+tempo decimal(6,3) NOT NULL,
+duration_ms integer NOT NULL,
+time_signature integer NOT NULL );
+
+
+SELECT * FROM BIT_DB.Spotifydata
+;
+
+-- What´s the average danceability artist?--
+SELECT
+artist_name
+,avg(danceability)
+FROM BIT_DB.spotifydata
+GROUP BY artist_name
+LIMIT 1;
+
+--Top 10 artist based on popularity--
+Select artist_name, track_name, popularity
+FROM BIT_DB.spotifydata
+Order by popularity desc
+limit 10;
+
+--What artist released the longest song?
+Select artist_name,track_name, max(duration_ms)
+FROM BIT_DB.spotifydata
+order by duration_ms desc;
+
+--What is the average danceaility for 10 most popular songs?--
+Select artist_name,
+track_name,
+popularity,
+avg(danceability)
+FROM BIT_DB.spotifydata
+GROUP BY track_name
+order by popularity desc
+LIMIT 10;
+
+--What is the average duration of songs?--
+SELECT
+avg(duration_ms)
+FROM BIT_DB.spotifydata;
+
+--5 Least popular artist--
+Select artist_name, track_name, popularity
+FROM BIT_DB.spotifydata
+Order by popularity asc
+limit 5;
+
+--Songs with instrumentalness--
+Select artist_name, track_name, instrumentalness
+from BIT_DB.spotifydata
+where instrumentalness <> "0.0"
+order by instrumentalness desc;
+
+Data Source:Yukhymenko, H. (2021). Spotify top 50 songs in 2021 in https://www.kaggle.com/datasets/equinxx/spotify-top-50-songs-in-2021?resource=download
