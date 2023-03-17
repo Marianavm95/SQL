@@ -1,10 +1,10 @@
-/*Show Customers (their full names, customer ID, and country) who are not in the US. (Hint: != or <> can be used to say "is not equal to").*/
+--Show Customers (their full names, customer ID, and country) who are not in the US. (Hint: != or <> can be used to say "is not equal to").--
 select FirstName, LastName, CustomerId, Country 
 from chinook.customers
 Where Country <> 'USA'
 Order by asc;
 
---Show only the Customers from Brazil*/
+--Show only the Customers from Brazil--
 select CustomerId, FirstName, LastName, Country 
 from chinook.customers
 where Country = 'Brazil';
@@ -112,3 +112,34 @@ group by E.FirstName
 Order by (round(sum(I.Total), 2))
 DESC Limit 1;
 
+--Provide a query that shows the top 3 best selling artists.--
+SELECT a.Name, COUNT(ii.TrackId) 
+FROM Chinook.artists a 
+Join Chinook.albums al 
+on a.ArtistId = al.ArtistId 
+JOIN Chinook.Tracks t
+on al.AlbumId = t.AlbumId 
+JOIN Chinook.Invoice_items ii
+on t.TrackId = ii.TrackId 
+GROUP BY a.Name 
+ORDER BY COUNT(ii.TrackId) DESC 
+LIMIT 3;
+
+--Provide a query that shows the total sales per country--
+Select BillingCountry, COUNT(InvoiceID) as "Number of Sales" 
+FROM chinook.invoices 
+GROUP BY BillingCountry;
+
+
+--What are the top best selling artist?--
+SELECT a.Name, COUNT(il.TrackId) as 'Best seller'
+FROM chinook.artists a
+Join chinook.albums al
+on a.ArtistId = al.ArtistId 
+join chinook.tracks t
+ON al.AlbumId = t.AlbumId 
+left outer join chinook.Invoice_items il
+on t.TrackId = il.TrackId 
+GROUP BY a.Name 
+ORDER BY COUNT(il.TrackId) DESC 
+LIMIT 3;
