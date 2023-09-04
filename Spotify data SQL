@@ -68,4 +68,18 @@ from BIT_DB.spotifydata
 where instrumentalness <> "0.0"
 order by instrumentalness desc;
 
+--Number of artists with >1 song--
+SELECT artist_name, count(track_id)
+FROM SpotifyData
+GROUP BY artist_name
+HAVING count(track_id) > 1)
+
+SELECT count(artist_name) FROM tempTable;
+
+--Find the average danceability of the top 10 most popular songs--
+SELECT AVG(danceability)
+FROM BIT_DB.Spotifydata 
+WHERE popularity <= 82;
+
+
 Data Source:Yukhymenko, H. (2021). Spotify top 50 songs in 2021 in https://www.kaggle.com/datasets/equinxx/spotify-top-50-songs-in-2021?resource=download
