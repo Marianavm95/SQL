@@ -1,4 +1,4 @@
--create table Crafts (id integer primary key, item TEXT, Aisle INTEGER, price INTEGER, popularity INTEGER);
+-Create table Crafts (id integer primary key, item TEXT, Aisle INTEGER, price INTEGER, popularity INTEGER);
 
 INSERT INTO Crafts VALUES
 (1, "Construction Paper", 4, 2.78, 4),
