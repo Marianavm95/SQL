@@ -1,4 +1,4 @@
--- Analyzed Apple Store Data for Stakeholders that are looking to design a new app. 
+/** Analyzed Apple Store Data for Stakeholders that are looking to design a new app **/
 
 CREATE TABLE applestore_description_combined AS
 SELECT * FROM appleStore_description1
